@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Telegram Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        .container {
+            text-align: center;
+        }
+        button {
+            background-color: #0088cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Mini App</h1>
+        <button onclick="showName()">Show My Name</button>
+        <p id="nameDisplay"></p>
+    </div>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+
+        tg.expand();
+
+        function showName() {
+            let name = tg.initDataUnsafe.user.first_name;
+            document.getElementById('nameDisplay').innerText = `Hello, ${name}!`;
+        }
+    </script>
+</body>
+</html>
